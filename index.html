@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Manipulating the DOM</title>
+    <!-- Load Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans:900|Merriweather&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Load Styles -->
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- HTML Follows BEM naming conventions 
+  IDs are only used for sections to connect menu achors to sections -->
+    <header class="page__header">
+      <nav class="navbar__menu">
+        <!-- Navigation starts as empty UL that will be populated with JS -->
+        <div>Logo</div>
+        <ul id="navbar__list">
+          <li><a class="home-nav">Home</a></li>
+          <li><a class="location-nav">Location</a></li>
+          <li><a class="history-nav">History</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!-- Each Section has an ID (used for the anchor) and 
+    a data attribute that will populate the li node.
+    Adding more sections will automatically populate nav.
+    The first section is set to active class by default -->
+      <section id="section1" data-nav="home-nav">
+        <div class="landing__container">
+          <h2>Restaurant</h2>
+          <p>
+            Best restaurant in California. Since 1979, we have served 100s of
+            thousands.
+          </p>
+          <p>
+            Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar
+            gravida, ipsum lacus aliquet velit, vel luctus diam ipsum a diam.
+            Cras eu tincidunt arcu, vitae rhoncus purus. Vestibulum fermentum
+            consectetur porttitor. Suspendisse imperdiet porttitor tortor, eget
+            elementum tortor mollis non.
+          </p>
+          <button id="book">Book now</button>
+        </div>
+      </section>
+      <section id="section2" data-nav="location-nav">
+        <div class="landing__container">
+          <div class="landing__container-image">
+            <img src="./img/4.jpg" alt="Food of our restaurant" />
+          </div>
+          <div>
+            <h2>Best place for socializing</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+              debitis eaque voluptate in optio maxime ipsam, veniam dolore qui
+              laborum quisquam, eos dolorem nam corrupti sed repudiandae a
+              reiciendis quis adipisci. Cupiditate provident nulla, libero odio
+              at atque tenetur, nihil debitis officiis velit unde iure
+              laboriosam dignissimos nesciunt. Et, ut.
+            </p>
+
+            <button id="book">Map</button>
+          </div>
+        </div>
+      </section>
+      <section id="section3" data-nav="history-nav">
+        <div class="landing__container">
+          <h2>Who are we</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            fermentum metus faucibus lectus pharetra dapibus. Suspendisse
+            potenti. Aenean aliquam elementum mi, ac euismod augue. Donec eget
+            lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed
+            convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla
+            eget bibendum consectetur, sem nisi aliquam leo, ut pulvinar quam
+            nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis
+            lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a
+            tincidunt felis. Sed leo nunc, pharetra et elementum non, faucibus
+            vitae elit. Integer nec libero venenatis libero ultricies molestie
+            semper in tellus. Sed congue et odio sed euismod.
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem id
+            consequuntur dolores vel perspiciatis, natus vero enim suscipit
+            similique sint ut sequi, quos cumque, temporibus labore at facere
+            fugit. Velit aspernatur maxime quo similique voluptatum officiis,
+            modi excepturi quibusdam in laborum dolorum officia repudiandae ut
+            est facilis repellat optio pariatur illum impedit voluptatibus.
+            Vitae est tempore temporibus inventore quisquam libero labore
+            accusamus, quidem nulla non reprehenderit hic architecto quos, esse
+            sapiente eum repudiandae laborum nisi aut officia recusandae neque
+            facere. Fugit, reiciendis deleniti vitae sit voluptate ipsum
+            inventore iusto deserunt dolorum magni beatae accusamus ex earum
+            ipsa perspiciatis necessitatibus mollitia!
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="page__footer">
+      <p>&copy Udacity</p>
+    </footer>
+    <script src="js/app.js"></script>
+  </body>
+</html>
