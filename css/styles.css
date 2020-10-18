@@ -75,12 +75,12 @@ p {
 .navbar__menu.scrolled {
 }
 
-.active-nav{
+.active{
     font-weight: bold;
     
 }
 
-.navbar__menu li a.active-nav{
+.navbar__menu li a.active{
     color: gold;
     
 }
@@ -159,16 +159,19 @@ p {
 #section1 .landing__container h2,
 #section2 .landing__container h2,
 #section3 .landing__container h2,
+#section4 .landing__container h2,
 #section1 .landing__container p,
 #section2 .landing__container p,
-#section3 .landing__container p
+#section3 .landing__container p,
+#section4 .landing__container p
 {
     color: black;
 }
 
 #section1 .landing__container p,
 #section2 .landing__container p,
-#section3 .landing__container p
+#section3 .landing__container p,
+#section4 .landing__container p
 {
     font-family: 'Poppins', sans-serif;
 }
@@ -213,6 +216,7 @@ p {
     .landing__container {
         max-width: 50em;
         padding: 4em;
+        
     }
 }
 

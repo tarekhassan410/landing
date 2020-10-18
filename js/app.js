@@ -19,27 +19,7 @@
  */
 
 //  Navigations links
-const homeSelector = document.querySelector(".home-nav");
-const locationSelector = document.querySelector(".location-nav");
-const historySelector = document.querySelector(".history-nav");
-const navbar = document.querySelector(".navbar__menu");
-
-// Scetions selectors
-const section1 = document.querySelector("#section1");
-const section2 = document.querySelector("#section2");
-const section3 = document.querySelector("#section3");
-homeSelector.addEventListener("click", () => {
-  section1.scrollIntoView({ block: "center", behavior: "smooth" });
-  homeSelector.classList.toggle("active-nav");
-});
-locationSelector.addEventListener("click", () => {
-  section2.scrollIntoView({ block: "center", behavior: "smooth" });
-  locationSelector.classList.toggle("active-nav");
-});
-historySelector.addEventListener("click", () => {
-  section3.scrollIntoView({ block: "center", behavior: "smooth" });
-  historySelector.classList.toggle("active-nav");
-});
+const sections = document.querySelectorAll("section");
 
 /**
  * End Global Variables
@@ -54,10 +34,60 @@ historySelector.addEventListener("click", () => {
  */
 
 // build the nav
+const navbarList = document.querySelector("#navbar__list");
+function buildMenu() {
+  // for every section add nav link and get data-nav attribute
+  // to add it as a class for navigation
+  for (let section of sections) {
+    let navItem = document.createElement("li");
+    navItem.innerHTML = `<a class=${section.getAttribute("data-nav")}> ${
+      section.querySelector("h2").textContent
+    } </a>`;
+    navbarList.appendChild(navItem);
+  }
+}
 
 // Add class 'active' to section when near top of viewport
+function addEventListenersToNav() {
+  // This function runs after BuildMenu() function
+  for (let nav of sections) {
+    let item = nav.getAttribute("data-nav");
+    document.querySelector(`.${item}`).addEventListener("click", () => {
+      nav.scrollIntoView({ block: "start", behavior: "smooth" });
+      document.querySelector(`.${item}`).classList.toggle("active");
+      document.querySelectorAll("#navbar__list li a").forEach((navItem) => {
+        if (navItem.classList.contains("active")) {
+          navItem.classList.remove("active");
+        }
+      });
+      if (!document.querySelector(`.${item}`).classList.contains("active")) {
+        document.querySelector(`.${item}`).classList.toggle("active");
+      }
+    });
+  }
+}
 
-// Scroll to anchor ID using scrollTO event
+// On scroll, get Y offset, comapre to Y offset of section and activate nav link
+window.addEventListener("scroll", () => {
+  console.log(window.pageYOffset);
+  for (let section of sections) {
+    if (
+      window.pageYOffset >
+      window.pageYOffset + section.getBoundingClientRect().top - 64
+    ) {
+      const item = section.getAttribute("data-nav");
+      document.querySelector(`.${item}`).classList.toggle("active");
+      document.querySelectorAll("#navbar__list li a").forEach((navItem) => {
+        if (navItem.classList.contains("active")) {
+          navItem.classList.remove("active");
+        }
+      });
+      if (!document.querySelector(`.${item}`).classList.contains("active")) {
+        document.querySelector(`.${item}`).classList.toggle("active");
+      }
+    }
+  }
+});
 
 /**
  * End Main Functions
@@ -65,40 +95,8 @@ historySelector.addEventListener("click", () => {
  *
  */
 
-// Build menu
-
-// Scroll to section on link click
-
-const sections = ["#section1", "#section2", "#section3"];
-for (let section of sections) {
-  document.querySelector(section).addEventListener("mouseover", function (e) {
-    let classNameInsideNav = e.currentTarget.getAttribute("data-nav");
-
-    if (
-      !document
-        .querySelector(`.${classNameInsideNav}`)
-        .classList.contains("active-nav")
-    ) {
-      document
-        .querySelector(`.${classNameInsideNav}`)
-        .classList.toggle("active-nav");
-    }
-  });
-}
-for (let section of sections) {
-  document.querySelector(section).addEventListener("mouseout", function (e) {
-    let classNameInsideNav = e.currentTarget.getAttribute("data-nav");
-
-    if (
-      document
-        .querySelector(`.${classNameInsideNav}`)
-        .classList.contains("active-nav")
-    ) {
-      document
-        .querySelector(`.${classNameInsideNav}`)
-        .classList.toggle("active-nav");
-    }
-  });
-}
-
-// Set sections as active
+// Event listener after DOM loaded
+window.addEventListener("DOMContentLoaded", () => {
+  buildMenu();
+  addEventListenersToNav();
+});
